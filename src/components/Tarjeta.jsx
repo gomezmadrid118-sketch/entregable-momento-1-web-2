@@ -1,20 +1,28 @@
+import './Tarjeta.css'
 import { usuarios } from '../data/usuarios'
 
 const Tarjeta = () => {
   return (
-    <>
-      {usuarios.map((usuario) => 
-        (<div key={usuario.id} className="tarjeta_usuario">
+    <div className="tarjetas_contenedor">
+      {usuarios.map((usuario) => (
+        <div key={usuario.id} className="tarjeta_usuario">
+          <img
+            src={`https://i.pravatar.cc/150?img=${usuario.id}`}
+            alt={usuario.nombre}
+            className="tarjeta_imagen"
+          />
           <h3>{usuario.nombre}</h3>
-          <img src={`https://i.pravatar.cc/150?img=${usuario.id}`} alt={usuario.nombre} />
-          <p>{usuario.rol}</p>
-          <p>{usuario.descripcion}</p>
-          <p>Lenguajes:</p>
-          <ul>{usuario.lenguajes.map((lenguaje, index) => 
-            (<li key={index}>{lenguaje}</li>))}
-            </ul>
-            </div>))}
-    </>
+          <p className="tarjeta_rol">{usuario.rol}</p>
+          <p className="tarjeta_descripcion">{usuario.descripcion}</p>
+          <p className="tarjeta_titulo_lenguajes">Lenguajes:</p>
+          <ul className="tarjeta_lenguajes">
+            {usuario.lenguajes.map((lenguaje, index) => (
+              <li key={index}>{lenguaje}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   )
 }
 
